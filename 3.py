@@ -1,46 +1,36 @@
+# pip install beautifulsoup4
+# pip install requests
+# pip install lxml
 import requests
 from bs4 import BeautifulSoup
-from collections import Counter
 
-'''Первым делом напишем парсер '''
-animals_lst = ['0']
-url = 'https://ru.wikipedia.org/wiki/Категория:Животные_по_алфавиту'
 
-'''Т.к. по условию задания необходимо парсить названия животных кирилицей, 
-ставлю условия цикла: (пока первая буква последнего элемента не равна латинской А '''
+def parser_wiki():
+    """Wikipedia site parser for a list of animals"""
 
-while animals_lst[-1][0] != 'A':
-    page = requests.get(url).text
-    soup = BeautifulSoup(page, 'lxml')
-    animals = soup.find('div', class_="mw-category-columns").find_all("a")
+    animals_lst = []
+    url = 'https://ru.wikipedia.org/wiki/Категория:Животные_по_алфавиту'
 
-    for animal in animals:
-        animals_lst.append(animal.text)
+    while True:
+        page = requests.get(url).text
+        soup = BeautifulSoup(page, 'lxml')
+        animals = soup.find('div', class_="mw-category-columns").find_all("a")
+        next_page = soup.find('div', id='mw-pages').find_all('a')  # Finding the address of the next page
 
-    links = soup.find('div', id='mw-pages').find_all('a')
+        """Parsed the data and added in to animals_lst[]"""
+        for animal in animals:
+            animals_lst.append(animal.text)
 
-    for a in links:
-        if a.text == 'Следующая страница':
-            url = 'https://ru.wikipedia.org' + a.get('href')
+        """Write new link in url"""
+        for link in next_page:
+            if link.text == 'Следующая страница':
+                url = 'https://ru.wikipedia.org' + link.get('href')
 
-'''Далее преобразуем список животных в список заглавных букв'''
+        """Exit from the loop when we find the last element"""
+        if animals_lst[-1] == 'Zyzzyx chilensis':  # Last element in wiki
+            break
 
-alphabet_lst = []
-idx = 1
+    return animals_lst
 
-while idx <= (len(animals_lst) - 2):
-    alphabet_lst.append(animals_lst[idx][0])
-    idx += 1
 
-'''Методом counter считаю количество повторения букв, и сортирую по алфавиту для корректности вывода'''
-alphabet_counter = Counter(alphabet_lst)
-eng_rus_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
-res = sorted(alphabet_counter, key=lambda x: eng_rus_upper.index(x[0][0]))
-
-'''Отсеиваю латинские буквы:
-По логике мы успеваем запарсить только небольшое количество значений на латинскую: "A" но из-за бага 
-википедии отсеиваем еще и "H" (почему-то в алфавитном списке вики на букву Д записанно название латинскими буквами'''
-for i in res:
-    if i != 'A':
-        if i != 'H':
-            print(i + ':', alphabet_counter[i])
+print(parser_wiki())
