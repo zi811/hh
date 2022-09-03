@@ -1,0 +1,100 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.top__heading {
+    font-size: 64px;
+    color: #1f3f68;
+    width: 510px;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 26px;
+    color: #1F3F68;
+}
+
+.top__heading {
+    font-size: 64px;
+    color: #1F3F68;
+}
+
+.heading-contacts {
+    font-weight: 500;
+    font-size: 44px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 36px;
+    text-align: center;
+}
+
+.heading_mini {
+    font-size: 20px;
+    line-height: 30px;
+    color: #1F3F68;
+}
+
+.input-text {
+    border: 1px solid #356EAD;
+    box-sizing: border-box;
+    border-radius: 10px;
+    opacity: 0.4;
+}
+
+.button_submit {
+    background: #5A98D0;
+    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.top__heading_text {
+    width: 425px;
+}
+
+.card_box {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.card {
+    width: 359px;
+}
+
+.footer__heading{
+    width: 340px;
+}
+
+.footer__text {
+    width: 495px;
+}
+
+.footer__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
