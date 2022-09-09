@@ -147,7 +147,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding-top: 64px;
-    padding-bottom: 64px; 
+    padding-bottom: 64px;
     
 }
 
@@ -281,7 +281,7 @@ hr {
     position: relative;
 }
 .project_pic {
-    width: 100%;
+    width: 97%;
 }
 .project_text {
     font-style: normal;
@@ -330,6 +330,15 @@ hr {
     .top__info{
         background-position: right 250px;
     }
+
+    .card_box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        margin-bottom: 32px;
+    }
 }
 
 
@@ -368,5 +377,46 @@ hr {
         font-size: 12px;
         line-height: 26px;
         padding: 0 8px;
+    }
+
+    .heading {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .what-we-do {
+        padding-top: 48px;
+    }
+
+    .card_box {
+        padding-top: 32px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .text_project {
+        width: 100%;
+    }
+
+    .project_text {
+        font-size: 16px;
+        line-height: 19px;
+        top: 16px;
+        right: 16px;
+    }
+
+    .text_down {
+        left: 16px;  
+    }
+
+    .project__parent {
+        flex-direction: column;
+        margin-top: 16px;
+    }
+
+    .project_item {
+        margin-bottom: 16px;
     }
 }
